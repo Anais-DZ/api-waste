@@ -16,20 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] != 'GET') {
     return;
 }
 
-// Récupération et validation du paramètre "biodéchet"
-if (!isset($_GET['biodéchet'])) {
-    http_response_code(400);
-    echo json_encode(["message" => "Biodéchet manquant.", "code" => 400]);
-    return;
-}
-
-// Vérification avec la regex (identique à celle du HTML)
-if (!preg_match('/^[A-Za-zÀ-ÿÀ-ÖØ-öø-ÿ\- ]{3,30}$/u', trim($_GET['biodéchet'])) {
-    http_response_code(400);
-    echo json_encode(["message" => "Format du biodéchet invalide.", "code" => 400]);
-    return;
-}
-
 // Connexion à la base de données
 try {
     $bdd = new PDO(
