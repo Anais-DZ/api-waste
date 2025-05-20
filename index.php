@@ -36,7 +36,8 @@ try {
     $reqPreparee = $bdd->prepare('SELECT w.name_waste, c.type_container
                                   FROM waste w
                                   INNER JOIN container c
-                                  ON w.id_container = c.id_container');
+                                  ON w.id_container = c.id_container
+                                  ORDER BY w.name_waste');
 
     // Exécution de la requête
     $reqPreparee->execute();
