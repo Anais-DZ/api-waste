@@ -47,12 +47,6 @@ try {
     // Après avoir fetchAll()
     $data = $reqRecuperee;
 
-    //! Décoder toutes les entités HTML pour chaque nom_waste
-    foreach ($data as &$row) {
-        $row['name_waste'] = html_entity_decode($row['name_waste'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
-    }
-
-
     // Chiffrer la réponse en json et afficher
     echo json_encode($reqRecuperee);
 
