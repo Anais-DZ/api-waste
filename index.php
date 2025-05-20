@@ -1,9 +1,8 @@
 <?php
 // MISE EN PLACE DE L'API
 
-
 // Headers requis
-header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: https://verify-compost.vercel.app/");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: GET");
 header("Access-Control-Max-Age: 3600");
@@ -40,9 +39,6 @@ try {
 
     // Récupération de la requête
     $reqRecuperee = $reqPreparee->fetchAll(PDO::FETCH_ASSOC);
-
-    // Log de la réponse
-    error_log(json_encode($reqRecuperee, JSON_UNESCAPED_UNICODE));
 
     // Chiffrer la réponse en json et afficher
     echo json_encode($reqRecuperee, JSON_UNESCAPED_UNICODE);
