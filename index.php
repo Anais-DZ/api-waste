@@ -41,7 +41,7 @@ try {
     $reqRecuperee = $reqPreparee->fetchAll(PDO::FETCH_ASSOC);
 
     // Chiffrer la réponse en json et afficher
-    echo json_encode($reqRecuperee, JSON_UNESCAPED_UNICODE);
+    echo json_encode($reqRecuperee);
 
     // Arrêt du script
     return;
