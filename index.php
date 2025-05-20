@@ -3,7 +3,7 @@
 
 // Headers requis
 header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json");
+header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: GET");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-AllowHeaders, Authorization, X-Requested-With");
@@ -41,7 +41,7 @@ try {
     $reqRecuperee = $reqPreparee->fetchAll(PDO::FETCH_ASSOC);
 
     // Chiffrer la réponse en json et afficher
-    echo json_encode($reqRecuperee);
+    echo json_encode($reqRecuperee, JSON_UNESCAPED_UNICODE);
 
     // Arrêt du script
     return;
