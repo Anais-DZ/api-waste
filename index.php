@@ -18,8 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] != 'GET') {
 // Connexion à la base de données
 try {
     $bdd = new PDO(
-        "mysql:host=" . getenv('bddhost') . ";dbname=" . getenv('bddname') . ";charset=utf8mb4",  getenv('bddlogin'),  getenv('bddpassword'), array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-    
+        "mysql:host=" . getenv('bddhost') . ";dbname=" . getenv('bddname') . ";charset=utf8mb4",
+        getenv('bddlogin'),
+        getenv('bddpassword'),
+        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
+    );
+
 } catch (PDOException $e) {
     http_response_code(500);
     echo json_encode(['message' => 'Erreur de connexion à la base de données', 'code' => 500]);
@@ -39,6 +43,14 @@ try {
 
     // Récupération de la requête
     $reqRecuperee = $reqPreparee->fetchAll(PDO::FETCH_ASSOC);
+    // Après avoir fetchAll()
+    $data = $reqRecuperee;
+
+    // Décoder toutes les entités HTML pour chaque nom_waste
+    foreach ($data as &$row) {
+        $row['name_waste'] = html_entity_decode($row['name_waste'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    }
+
 
     // Chiffrer la réponse en json et afficher
     echo json_encode($reqRecuperee, JSON_UNESCAPED_UNICODE);
