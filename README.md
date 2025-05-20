@@ -89,4 +89,3 @@ wasteApi();
 ## 📄 Documentation de l'API
 
 👉 [Lire la documentation](https://github.com/Anais-DZ/api-waste/blob/main/doc-api-waste.pdf)
-
