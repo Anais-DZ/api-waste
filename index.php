@@ -44,11 +44,12 @@ try {
 
     // Récupération de la requête
     $reqRecuperee = $reqPreparee->fetchAll(PDO::FETCH_ASSOC);
+    
     // Après avoir fetchAll()
     $data = $reqRecuperee;
 
     // Chiffrer la réponse en json et afficher
-    echo json_encode($reqRecuperee);
+    echo json_encode($data);
 
     // Arrêt du script
     return;
