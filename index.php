@@ -2,7 +2,7 @@
 // MISE EN PLACE DE L'API
 
 // Headers requis
-header("Access-Control-Allow-Origin: https://verify-compost.vercel.app/");
+header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: GET");
 header("Access-Control-Max-Age: 3600");
